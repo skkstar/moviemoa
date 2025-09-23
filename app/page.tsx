@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Film, Star, BarChart3, Play, Calendar, TrendingUp, Search,, BookOpen, Lightbulb, Award, Clock, Users } from "lucide-react";
+import { Film, Star, BarChart3, Play, Calendar, TrendingUp, Search, BookOpen, Lightbulb, Award, Clock, Users } from "lucide-react";
 import { getLatestMovies, getPopularMovies, getImageUrl, formatDate, MovieSearchResult } from "@/lib/tmdb";
 import MovieCarousel from "@/components/MovieCarousel";
 import "@/components/MovieCarousel.css";
