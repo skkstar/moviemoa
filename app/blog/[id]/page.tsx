@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Calendar, User, ArrowLeft, Clock, Film, Star } from "lucide-react";
+import { Metadata } from "next";
 
 // 정적 블로그 포스트 데이터 (실제로는 별도 파일에서 import)
 const blogPosts = [
@@ -428,6 +429,37 @@ const blogPosts = [
 interface BlogPostPageProps {
   params: {
     id: string;
+  };
+}
+
+export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
+  const post = blogPosts.find(p => p.id === parseInt(params.id));
+  
+  if (!post) {
+    return {
+      title: "포스트를 찾을 수 없습니다 - MOVEA",
+      description: "요청하신 블로그 포스트를 찾을 수 없습니다.",
+    };
+  }
+
+  return {
+    title: `${post.title} - MOVEA 영화 블로그`,
+    description: post.excerpt,
+    keywords: post.tags.join(', '),
+    authors: [{ name: post.author }],
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: 'article',
+      publishedTime: post.date,
+      authors: [post.author],
+      tags: post.tags,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+    },
   };
 }
 
