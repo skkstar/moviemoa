@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Film, Star, BarChart3, LogIn, LogOut, User, Search, Menu } from 'lucide-react'
+import { Film, Star, BarChart3, LogIn, LogOut, User, Search, Menu, BookOpen } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
 import { useState } from 'react'
 
@@ -15,6 +15,7 @@ export default function Navigation() {
     { href: '/', label: '홈', icon: Film },
     { href: '/search', label: '영화 검색', icon: Search },
     { href: '/my-movies', label: '내 컬렉션', icon: Star },
+    { href: '/blog', label: '블로그', icon: BookOpen },
   ]
 
   const handleSignIn = async () => {
