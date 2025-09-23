@@ -54,7 +54,7 @@ export default function Home() {
               MOVEA
             </h1>
             <p className="text-2xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              최신 영화를 발견하고, 평점을 남기고, 나만의 영화 컬렉션을 만들어보세요
+              최신 영화를 발견하고, 나만의 영화 컬렉션을 만들어보세요
             </p>
             <div className="flex justify-center gap-4">
               <Link
