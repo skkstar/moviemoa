@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "MOVEA - 나만의 영화 컬렉션",
   description: "최신 영화를 발견하고, 평점을 남기고, 나만의 영화 컬렉션을 만들어보세요",
+  verification: {
+    google: "9fnymh2w_dS9CVqHqbp-iWF8jK6puit6gDLBSmGuWGI",
+  },
 };
 
 export default function RootLayout({

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Film, Star, BarChart3, Play, Calendar, TrendingUp, Search } from "lucide-react";
+import { Film, Star, BarChart3, Play, Calendar, TrendingUp, Search,, BookOpen, Lightbulb, Award, Clock, Users } from "lucide-react";
 import { getLatestMovies, getPopularMovies, getImageUrl, formatDate, MovieSearchResult } from "@/lib/tmdb";
 import MovieCarousel from "@/components/MovieCarousel";
 import "@/components/MovieCarousel.css";
@@ -163,6 +163,54 @@ export default function Home() {
                 </div>
               </Link>
             ))}
+          </div>
+        </section>
+
+        {/* 영화 가이드 정보 섹션 - 구글 애드센스 승인용 정보성 컨텐츠 */}
+        <section className="mb-16">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-1 h-8 rounded-full" style={{ background: 'linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%)' }}></div>
+            <h2 className="text-3xl font-bold text-white flex items-center gap-2">
+              <BookOpen className="w-7 h-7 text-purple-400" />
+              영화 완벽 가이드
+            </h2>
+          </div>
+          
+          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10">
+            <h3 className="text-2xl font-bold text-white mb-6">영화 장르별 특징과 관람 가이드</h3>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div>
+                <h4 className="text-xl font-bold text-white mb-4">액션 영화의 특징</h4>
+                <p className="text-gray-300 leading-relaxed mb-4">
+                  액션 영화는 스릴 넘치는 추격전과 격투 장면이 특징인 장르입니다. 하드코어 액션부터 코미디 액션까지 다양한 스타일이 있으며, 
+                  마블 시네마틱 유니버스, 미션 임파서블 시리즈, 존 윅 시리즈 등이 대표적입니다. 빠른 속도의 편집과 임팩트 있는 액션 시퀀스가 핵심 요소이며, 
+                  관객들에게 카타르시스를 제공합니다.
+                </p>
+                
+                <h4 className="text-xl font-bold text-white mb-4">로맨스 영화의 매력</h4>
+                <p className="text-gray-300 leading-relaxed mb-4">
+                  로맨스 영화는 사랑과 감정을 주제로 한 장르로, 로맨틱 코미디부터 멜로드라마까지 다양한 형태가 있습니다. 
+                  노트북, 라라랜드, 어바웃 타임 등은 감동적인 스토리와 아름다운 연출로 많은 사랑을 받았으며, 
+                  감정적 몰입과 캐릭터 간의 화학 반응이 중요한 요소입니다.
+                </p>
+              </div>
+              
+              <div>
+                <h4 className="text-xl font-bold text-white mb-4">SF 영화의 세계관</h4>
+                <p className="text-gray-300 leading-relaxed mb-4">
+                  SF 영화는 과학과 기술을 바탕으로 한 미래적 상상력과 철학적 메시지를 담고 있습니다. 
+                  인터스텔라, 블레이드 러너, 매트릭스 등은 SF 장르의 걸작으로 꼽히며, 
+                  첨단 기술과 인간성에 대한 깊이 있는 탐구가 특징입니다.
+                </p>
+                
+                <h4 className="text-xl font-bold text-white mb-4">완벽한 영화 관람 팁</h4>
+                <p className="text-gray-300 leading-relaxed">
+                  영화 관람 전에는 정보를 미리 확인하고 예고편을 시청하여 적절한 시간을 선택하는 것이 중요합니다. 
+                  관람 후에는 감상 후기를 작성하고 관련 작품을 탐색하며 컬렉션을 관리하여 영화 경험을 확장할 수 있습니다.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
