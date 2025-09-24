@@ -24,6 +24,7 @@ export default function Navigation() {
   const testNavItems = user ? [
     { href: '/payment-test', label: '결제 테스트', icon: CreditCard },
     { href: '/payment-integration-test', label: 'API 연동 테스트', icon: CreditCard },
+    { href: '/supabase-config', label: 'Supabase 설정', icon: CreditCard },
   ] : []
 
   const handleSignIn = async () => {

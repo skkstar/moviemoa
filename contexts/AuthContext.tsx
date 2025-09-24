@@ -48,19 +48,28 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signInWithGoogle = async () => {
     try {
+      // 현재 환경에 따른 리다이렉트 URL 설정
+      const redirectUrl = process.env.NODE_ENV === 'development' 
+        ? 'http://localhost:3000/auth/callback'
+        : `${window.location.origin}/auth/callback`
+
+      console.log('리다이렉트 URL:', redirectUrl)
+      
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: `${window.location.origin}/auth/callback`
+          redirectTo: redirectUrl
         }
       })
       
       if (error) {
         console.error('구글 로그인 오류:', error)
+        alert(`로그인 오류: ${error.message}`)
         throw error
       }
     } catch (error) {
       console.error('로그인 실패:', error)
+      alert('로그인에 실패했습니다. 잠시 후 다시 시도해주세요.')
     }
   }
 
