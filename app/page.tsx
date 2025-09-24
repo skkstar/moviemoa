@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Film, Star, BarChart3, Play, Calendar, TrendingUp, Search, BookOpen, Lightbulb, Award, Clock, Users } from "lucide-react";
+import { Film, Star, BarChart3, Play, Calendar, TrendingUp, Search, BookOpen, Lightbulb, Award, Clock, Users, Crown } from "lucide-react";
 import { getLatestMovies, getPopularMovies, getImageUrl, formatDate, MovieSearchResult } from "@/lib/tmdb";
 import MovieCarousel from "@/components/MovieCarousel";
 import "@/components/MovieCarousel.css";
@@ -83,6 +83,19 @@ export default function Home() {
               >
                 <Star className="w-5 h-5" />
                 내 컬렉션
+              </Link>
+              <Link
+                href="/premium"
+                className="px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center gap-2 hover:scale-105"
+                style={{ 
+                  background: 'linear-gradient(135deg, #9D4EDD 0%, #C77DFF 100%)', 
+                  color: '#FFFFFF',
+                  borderRadius: '12px',
+                  boxShadow: '0 8px 32px rgba(157, 78, 221, 0.3)'
+                }}
+              >
+                <Crown className="w-5 h-5" />
+                프리미엄
               </Link>
             </div>
           </div>
@@ -239,6 +252,17 @@ export default function Home() {
               }}
             >
               내 컬렉션
+            </Link>
+            <Link
+              href="/premium"
+              className="px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105"
+              style={{ 
+                background: 'linear-gradient(135deg, #9D4EDD 0%, #C77DFF 100%)', 
+                color: '#FFFFFF',
+                borderRadius: '12px'
+              }}
+            >
+              프리미엄 서비스
             </Link>
             <Link
               href="/database-test"

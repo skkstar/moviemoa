@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Film, Star, BarChart3, LogIn, LogOut, User, Search, Menu, BookOpen } from 'lucide-react'
+import { Film, Star, BarChart3, LogIn, LogOut, User, Search, Menu, BookOpen, CreditCard, Crown } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
 import { useState } from 'react'
 
@@ -16,7 +16,15 @@ export default function Navigation() {
     { href: '/search', label: '영화 검색', icon: Search },
     { href: '/my-movies', label: '내 컬렉션', icon: Star },
     { href: '/blog', label: '블로그', icon: BookOpen },
+    { href: '/premium', label: '프리미엄', icon: Crown },
+    { href: '/payments', label: '결제 관리', icon: CreditCard },
   ]
+
+  // 개발자용 테스트 페이지 (로그인된 사용자만 보임)
+  const testNavItems = user ? [
+    { href: '/payment-test', label: '결제 테스트', icon: CreditCard },
+    { href: '/payment-integration-test', label: 'API 연동 테스트', icon: CreditCard },
+  ] : []
 
   const handleSignIn = async () => {
     try {
@@ -75,6 +83,32 @@ export default function Navigation() {
                     color: isActive ? '#FFFFFF' : '#FFFFFF',
                     borderRadius: '12px'
                   }}
+                >
+                  <Icon className="w-4 h-4" />
+                  <span>{item.label}</span>
+                </Link>
+              )
+            })}
+            
+            {/* 테스트 페이지 링크 */}
+            {testNavItems.map((item) => {
+              const Icon = item.icon
+              const isActive = pathname === item.href
+              
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 ${
+                    isActive ? 'hover:scale-105' : 'hover:bg-white/10'
+                  }`}
+                  style={{
+                    background: isActive ? 'linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%)' : 'transparent',
+                    color: isActive ? '#FFFFFF' : '#FFFFFF',
+                    borderRadius: '12px',
+                    opacity: 0.8
+                  }}
+                  title="개발자 테스트 페이지"
                 >
                   <Icon className="w-4 h-4" />
                   <span>{item.label}</span>
@@ -156,6 +190,33 @@ export default function Navigation() {
                       color: '#FFFFFF',
                       borderRadius: '12px'
                     }}
+                  >
+                    <Icon className="w-5 h-5" />
+                    <span>{item.label}</span>
+                  </Link>
+                )
+              })}
+              
+              {/* 모바일 테스트 페이지 링크 */}
+              {testNavItems.map((item) => {
+                const Icon = item.icon
+                const isActive = pathname === item.href
+                
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${
+                      isActive ? 'hover:scale-105' : 'hover:bg-white/10'
+                    }`}
+                    style={{
+                      background: isActive ? 'linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%)' : 'transparent',
+                      color: '#FFFFFF',
+                      borderRadius: '12px',
+                      opacity: 0.8
+                    }}
+                    title="개발자 테스트 페이지"
                   >
                     <Icon className="w-5 h-5" />
                     <span>{item.label}</span>

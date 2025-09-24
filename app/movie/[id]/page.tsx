@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useParams, useRouter } from 'next/navigation'
-import { ArrowLeft, Star, Calendar, Clock, Globe, DollarSign } from 'lucide-react'
+import { ArrowLeft, Star, Calendar, Clock, Globe, DollarSign, Crown } from 'lucide-react'
 import { getMovieDetails, getImageUrl, formatDate, formatRuntime, MovieDetails } from '@/lib/tmdb'
 import { supabase } from '@/lib/supabase'
 import { useAuth } from '@/contexts/AuthContext'
@@ -195,6 +195,31 @@ export default function MovieDetailPage() {
                   } disabled:opacity-50 disabled:cursor-not-allowed`}
                 >
                   {saved ? '저장 완료!' : saving ? '저장 중...' : '평점 저장'}
+                </button>
+              </div>
+            </div>
+
+            {/* 프리미엄 구독 섹션 */}
+            <div className="mt-6 bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-sm border border-purple-400/30 rounded-xl p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <Crown className="w-6 h-6 text-yellow-400" />
+                <h3 className="text-xl font-bold text-white">프리미엄으로 더 많은 기능 이용하기</h3>
+              </div>
+              <p className="text-gray-300 mb-4">
+                무제한 영화 분석, 개인화된 추천, 독점 콘텐츠를 만나보세요!
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <button
+                  onClick={() => router.push('/premium')}
+                  className="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg font-semibold hover:scale-105 transition-all duration-300"
+                >
+                  프리미엄 구독하기
+                </button>
+                <button
+                  onClick={() => router.push('/premium')}
+                  className="px-6 py-3 bg-white/10 text-white rounded-lg font-medium hover:bg-white/20 transition-colors"
+                >
+                  자세히 보기
                 </button>
               </div>
             </div>
