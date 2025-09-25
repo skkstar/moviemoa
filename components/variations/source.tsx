@@ -6,7 +6,14 @@ import { Film, Star, BarChart3, LogIn, LogOut, User, Search, Menu, BookOpen, Cre
 import { useAuth } from '@/contexts/AuthContext'
 import { useState } from 'react'
 
-export default function Navigation() {
+// Navigation 컴포넌트의 Props 인터페이스 정의
+interface NavigationProps {
+  className?: string
+  style?: React.CSSProperties
+}
+
+// 원본 Navigation 컴포넌트 - 현재 스타일 유지
+const SourceNavigation: React.FC<NavigationProps> = ({ className = '', style = {} }) => {
   const pathname = usePathname()
   const { user, loading, signInWithGoogle, signOut } = useAuth()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -25,7 +32,6 @@ export default function Navigation() {
     { href: '/payment-test', label: '결제 테스트', icon: CreditCard },
     { href: '/payment-integration-test', label: 'API 연동 테스트', icon: CreditCard },
     { href: '/supabase-config', label: 'Supabase 설정', icon: CreditCard },
-    { href: '/variations', label: '디자인 변형', icon: Crown },
   ] : []
 
   const handleSignIn = async () => {
@@ -46,12 +52,13 @@ export default function Navigation() {
 
   return (
     <nav 
-      className="sticky top-0 z-50"
+      className={`sticky top-0 z-50 ${className}`}
       style={{ 
         background: 'rgba(15, 15, 35, 0.95)',
         backdropFilter: 'blur(20px)',
         borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
+        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+        ...style
       }}
     >
       <div className="container mx-auto px-4">
@@ -281,3 +288,5 @@ export default function Navigation() {
     </nav>
   )
 }
+
+export default SourceNavigation
